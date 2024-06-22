@@ -25,7 +25,7 @@ A misconfiguration in the load balancer caused a cascading failure, leading to a
 - **16:00 UTC:** Gradual recovery observed as the database load normalized.
 - **16:30 UTC:** Full service restored, confirmed by monitoring tools and user reports.
 
-![Timeline](https://via.placeholder.com/800x400.png?text=Timeline+Diagram)
+![Timeline](https://www.google.com/imgres?q=Timeline%20for%20Web%20Stack%20Outage%20Postmortem&imgurl=https%3A%2F%2Fmedia.licdn.com%2Fdms%2Fimage%2FD4D12AQFAsmnUxuYYew%2Farticle-cover_image-shrink_720_1280%2F0%2F1691871062823%3Fe%3D2147483647%26v%3Dbeta%26t%3DDs8MFdHaGPdPTQSZNH8WwCdR_RBHCmUB1w6MVO189dI&imgrefurl=https%3A%2F%2Fwww.linkedin.com%2Fpulse%2Fpostmortem-web-stack-outage-olatunji-azeez&docid=CKj1LqQRXikGvM&tbnid=5WzGGl-XinD3kM&vet=12ahUKEwjGwKTuge-GAxV1fKQEHXrhCsYQM3oECGoQAA..i&w=1024&h=645&hcb=2&ved=2ahUKEwjGwKTuge-GAxV1fKQEHXrhCsYQM3oECGoQAA)
 
 ## Root Cause and Resolution
 
@@ -33,13 +33,13 @@ A misconfiguration in the load balancer caused a cascading failure, leading to a
 
 The issue was caused by a recent change in the load balancer configuration. The configuration change was intended to optimize traffic distribution but inadvertently directed all traffic to a single node. This resulted in an overload of the primary database server, causing it to slow down and eventually fail to respond to queries, which led to a cascade of 500 errors across the service.
 
-![Root Cause Diagram](https://via.placeholder.com/800x400.png?text=Root+Cause+Diagram)
+![Root Cause Diagram](https://www.google.com/imgres?q=root%20caus%20digram%20for%20Web%20Stack%20Outage%20Postmortem&imgurl=https%3A%2F%2Fcdn2.unrealengine.com%2FFortnite%252Fblog%252Fpostmortem-of-service-outage-at-3-4m-ccu%252F0_0-1600x883-feeb5a4593170bcaee886082bd6e61477b552e98.png&imgrefurl=https%3A%2F%2Fwww.fortnite.com%2Fnews%2Fpostmortem-of-service-outage-at-3-4m-ccu%3Flang%3Den-US&docid=IvjglE378v98aM&tbnid=dD8VfskSbgDHUM&vet=12ahUKEwji78adgu-GAxX_ZqQEHbrOALgQM3oECF8QAA..i&w=1600&h=883&hcb=2&ved=2ahUKEwji78adgu-GAxX_ZqQEHbrOALgQM3oECF8QAA)
 
 **Resolution:**
 
 The resolution involved reverting the load balancer configuration to its previous state. Once the change was reverted, the traffic was evenly distributed across multiple nodes, allowing the primary database server to recover. Further adjustments were made to the load balancer configuration to prevent future occurrences of similar issues.
 
-![Resolution Flowchart](https://via.placeholder.com/800x400.png?text=Resolution+Flowchart)
+![Resolution Flowchart](https://www.google.com/imgres?q=resuliotion%20flow%20chart%20for%20Web%20Stack%20Outage%20Postmortem&imgurl=https%3A%2F%2Fcdn.slidesharecdn.com%2Fss_thumbnails%2Fcallcenterflowdiagram-130304162154-phpapp02-thumbnail.jpg%3Fwidth%3D640%26height%3D640%26fit%3Dbounds&imgrefurl=https%3A%2F%2Fwww.slideshare.net%2Fslideshow%2Fcall-center-information-flow-diagram%2F16929916&docid=fsFBIJGVuEgXPM&tbnid=iUmT9btS0KRwSM&vet=12ahUKEwiqlu6_gu-GAxWCU6QEHfA7CsQQM3oECFwQAA..i&w=640&h=414&hcb=2&ved=2ahUKEwiqlu6_gu-GAxWCU6QEHfA7CsQQM3oECFwQAA)
 
 ## Corrective and Preventative Measures
 
