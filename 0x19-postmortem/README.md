@@ -25,22 +25,34 @@ A misconfiguration in the load balancer caused a cascading failure, leading to a
 - **16:00 UTC:** Gradual recovery observed as the database load normalized.
 - **16:30 UTC:** Full service restored, confirmed by monitoring tools and user reports.
 
+![Timeline](https://via.placeholder.com/800x400.png?text=Timeline+Diagram)
+
 ## Root Cause and Resolution
 
-**Root Cause:**  
+**Root Cause:**
+
 The issue was caused by a recent change in the load balancer configuration. The configuration change was intended to optimize traffic distribution but inadvertently directed all traffic to a single node. This resulted in an overload of the primary database server, causing it to slow down and eventually fail to respond to queries, which led to a cascade of 500 errors across the service.
 
-**Resolution:**  
+![Root Cause Diagram](https://via.placeholder.com/800x400.png?text=Root+Cause+Diagram)
+
+**Resolution:**
+
 The resolution involved reverting the load balancer configuration to its previous state. Once the change was reverted, the traffic was evenly distributed across multiple nodes, allowing the primary database server to recover. Further adjustments were made to the load balancer configuration to prevent future occurrences of similar issues.
+
+![Resolution Flowchart](https://via.placeholder.com/800x400.png?text=Resolution+Flowchart)
 
 ## Corrective and Preventative Measures
 
-**Improvements:**  
+**Improvements:**
+
 - Improved load balancer configuration testing protocols to ensure any changes do not lead to traffic misrouting.
 - Enhanced monitoring to detect load imbalances sooner.
 - Better communication channels between teams during incident response.
 
+![Improvements Diagram](https://via.placeholder.com/800x400.png?text=Improvements+Diagram)
+
 **Tasks:**
+
 1. **Patch Load Balancer Configuration:**
    - Revert to previous stable configuration immediately after identifying the issue.
    - Implement automated testing for load balancer configurations in a staging environment before deploying to production.
@@ -53,4 +65,3 @@ The resolution involved reverting the load balancer configuration to its previou
    - Organize workshops on best practices for load balancing and traffic management.
    - Conduct regular drills simulating similar outages to improve response times.
 
-By implementing these measures, we aim to prevent similar incidents in the future and ensure a more robust and resilient system.
