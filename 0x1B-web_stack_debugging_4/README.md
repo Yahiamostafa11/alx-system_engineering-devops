@@ -1,6 +1,6 @@
 # Web_stack_debugging_4
 
-![](https://images.app.goo.gl/GE1rhTqcUdvDiLSK7)
+![](https://www.dreamstime.com/sky-limit-motivational-inspirational-quote-against-blue-clouds-background-image201633957.png)
 
 ## General Requirements
 
